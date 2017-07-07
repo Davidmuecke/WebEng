@@ -1,0 +1,93 @@
+/* classes */
+
+.cell{
+    /*margin: 4%; */
+    background-color: white;
+    border-radius: 50%;
+    display: inline-block;
+    width: 9.6vh;
+}
+
+.column {
+    float: left;
+    background-color: #f757ee;
+    min-width: 35px;
+    width: 12vh;
+}
+
+.lastColumn .row{
+    border-right: solid; border-width: 0.4vh;
+}
+.error {
+    background-color: #f74f35;
+    padding: 2vh;
+}
+.dummy{
+    margin-top: 100%;
+}
+
+.footer{
+    position: fixed; bottom: 0px; left: 0px;
+    width: 100%;
+    font-size: 1.4em; color: white;
+    background-color: #03202e;
+}
+.footer div {margin: auto; text-align: center;}
+.footer div a {text-decoration: none; color: white;}
+
+.header{
+    position: fixed; top: 0px; left: 0px;
+    width: 100%; min-height: 5vh;
+    font-size: 1.4em; color: white;
+    background-color: #03202e;
+}
+.header a {text-decoration: none; color: green;}
+.header a:visited {text-decoration: none; color: white;}
+
+.row {
+    display: block;
+    background-color: #42689d;
+    min-width: 30px; min-height: 30px;
+    width: 9.6vh; height: 9.6vh;
+    margin: auto; padding: 1vh;
+    border-top: solid; border-left: solid; border-width: 0.4vh;
+
+}
+.lastRow{
+    border-bottom: solid; border-width: 0.4vh; border-left: solid;
+}
+
+.sp1 {
+    background-color: red;
+    border-radius: 50%;
+    display: inline-block;
+    width: 9.6vh;
+}
+.sp2 {
+    background-color: green;
+    border-radius: 50%;
+    display: inline-block;
+    width: 9.6vh;
+}
+/* ids*/
+#background {
+    min-width: 340px; width: 110vh;
+    min-height: 400px;
+    margin: auto; margin-top: 7vh; margin-bottom: 7vh;
+    padding: 15px;
+    background-color: aqua;}
+
+#game {
+    min-width: 300px;
+    width: 86vh;
+    height: 100vh;
+    margin: auto;
+
+
+}
+
+
+/* html Elements*/
+input {
+    margin-bottom: 10px;
+}
