@@ -25,6 +25,9 @@
     <a href="Registrierung.php">
         <button>Jetzt Registrieren</button>
     </a>
+    <a href="Registrierung.php">
+        <button>Jetzt Registrieren</button>
+    </a>
 </div>
 <?php
     require("ressources/footer.inc.php");
