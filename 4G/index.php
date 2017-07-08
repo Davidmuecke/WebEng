@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="ressources/css/bootstrap.min.css">
     <link rel="stylesheet" href="ressources/css/custom_styles.css">
-    <title>Login -4G</title>
+    <title>Login</title>
 </head>
-<body onload="mail()">
+<body onload="mail();">
 <div class="container">
 
     <div class="page-header">
@@ -54,6 +54,8 @@
             </div>
         </div>
     </div>
+</div>
+
     <?php
     require("ressources/footer.inc.php");
     ?>

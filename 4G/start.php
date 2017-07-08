@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="ressources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="ressources/css/custom_styles.css">
+    <title>Login 4G</title>
+</head>
+
 <?php
 require("ressources/header.inc.php");
 ?>

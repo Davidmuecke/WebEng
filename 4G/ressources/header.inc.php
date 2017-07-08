@@ -34,7 +34,6 @@ if(!isset($_SESSION['userName'])){
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css" >
     <title>4 Gewinnt</title>
 </head>
 
