@@ -1,10 +1,10 @@
 
 body {
-    background:  #0C2C52; /* For browsers that do not support gradients */
-    background: -webkit-radial-gradient( #0C2C52,  #5E9DC8,  #DCF0F7); /* Safari 5.1 to 6.0 */
-    background: -o-radial-gradient( #0C2C52,  #5E9DC8,  #DCF0F7); /* For Opera 11.6 to 12.0 */
-    background: -moz-radial-gradient( #0C2C52,  #5E9DC8,  #DCF0F7); /* For Firefox 3.6 to 15 */
-    background: repeating-radial-gradient(#0C2C52,  #5E9DC8,  #DCF0F7) no-repeat center center fixed; /* Standard syntax */
+    background: #0C2C52; /* For browsers that do not support gradients */
+    background: -webkit-radial-gradient(#0C2C52, #5E9DC8, #DCF0F7); /* Safari 5.1 to 6.0 */
+    background: -o-radial-gradient(#0C2C52, #5E9DC8, #DCF0F7); /* For Opera 11.6 to 12.0 */
+    background: -moz-radial-gradient(#0C2C52, #5E9DC8, #DCF0F7); /* For Firefox 3.6 to 15 */
+    background: repeating-radial-gradient(#0C2C52, #5E9DC8, #DCF0F7) no-repeat center center fixed; /* Standard syntax */
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -30,7 +30,7 @@ input[type=text], input[type=password] {
     color: #DCF0F7;
 }
 
-#panel-heading {
+#panel-heading, thead {
     background-color: #5E9DC8;
 }
 
@@ -65,4 +65,17 @@ button:hover {
 
 .alert {
     text-align: center;
+}
+
+td:nth-child(odd) {
+    background-color: #DCF0F7;
+}
+
+td:nth-child(even) {
+    background-color: #5E9DC8;
+}
+
+.startsections {
+    text-align: center;
+    color: #DCF0F7;
 }

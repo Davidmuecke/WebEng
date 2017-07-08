@@ -56,8 +56,8 @@
     </div>
 </div>
 
-    <?php
-    require("ressources/footer.inc.php");
-    ?>
+<?php
+require("ressources/footer.inc.php");
+?>
 </body>
 </html>
