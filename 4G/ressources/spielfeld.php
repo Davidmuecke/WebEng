@@ -130,7 +130,7 @@ if(isset($_REQUEST['game'])){
                     }
                     $stringSpielstand= $stringSpielstand.";";
                 }
-                //Datenbank aktuallisieren
+                //Datenbank aktualisieren
                 //testen ob Spieler gewonnen hat
                 if(gewonnen($spielstand)==$myID){
                     mysqli_query($my_db,"UPDATE spiel SET spielstand ='".$stringSpielstand."', amzug='ENDE' WHERE ID ='".$gameID."'")  or die (mysqli_error($my_db));
