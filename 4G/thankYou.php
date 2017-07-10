@@ -12,15 +12,17 @@ require("ressources/dba.php");
 //Registrierungs logik
 
 
-if(isset($_REQUEST['vorname'])&& isset($_REQUEST['nachname'])&&isset($_REQUEST['mail']) && isset($_REQUEST['userName']) && isset($_REQUEST['password']) && isset($_REQUEST["passwordWdh"]) ){
+if(isset($_REQUEST['vorname'])&& isset($_REQUEST['nachname'])&&isset($_REQUEST['mail']) && isset($_REQUEST['userName']) && isset($_REQUEST['password']) && isset($_REQUEST["passwordWdh"]) && isset($_REQUEST['alter']) && isset($_REQUEST['geschlecht']) ){
     $vorname = mysqli_real_escape_string($my_db,htmlentities($_REQUEST['vorname']));
     $nachname = mysqli_real_escape_string($my_db,htmlentities($_REQUEST['nachname']));
     $mail = mysqli_real_escape_string($my_db,htmlentities($_REQUEST['mail']));
     $userName = mysqli_real_escape_string($my_db,htmlentities($_REQUEST['userName']));
+    $alter = mysqli_real_escape_string($my_db, htmlentities($_REQUEST['alter']));
+    $geschlecht = mysqli_real_escape_string($my_db, htmlentities($_REQUEST['geschlecht']));
     $challenge = password_hash($mail,PASSWORD_DEFAULT);
     if($_REQUEST["password"] == $_REQUEST["passwordWdh"]){
         $pas = password_hash($_REQUEST['password'],PASSWORD_DEFAULT);
-        $sql= "INSERT INTO unbestaetigt (challenge, userName, vorname, nachname, mail, password) VALUES('".$challenge."','".$userName."','".$vorname."','".$nachname."','".$mail."','".$pas."')";
+        $sql= "INSERT INTO unbestaetigt (challenge, userName, vorname, nachname, mail, password, alter, geschlecht) VALUES('".$challenge."','".$userName."','".$vorname."','".$nachname."','".$mail."','".$pas." ','".$alter." ',' ".$geschlecht."')";
        // echo $sql;
         $res = mysqli_query($my_db, $sql) or die (mysqli_error($my_db));
         echo "<div class=\"page-header\">
@@ -44,7 +46,7 @@ if(isset($_REQUEST['challenge'])){
     //echo "<br>res: ".$res['challenge'];
     if($res['challenge']==$challenge){
        // echo "<br>Werte sind gleich: Jetzt änderungen in Tabellen ausführen!";
-        $sql = "INSERT INTO benutzer (userName, vorname, nachname, email, password) VALUES ('".$res['userName']."','".$res['vorname']."','".$res['nachname']."','".$res['mail']."','".$res['password']."')";
+        $sql = "INSERT INTO benutzer (userName, vorname, nachname, email, password, alter, geschlecht) VALUES ('".$res['userName']."','".$res['vorname']."','".$res['nachname']."','".$res['mail']."','".$res['password']." ','".$res['alter']." ',' ".$res['geschlecht']." ')";
         // echo "<br>".$sql."<br>";
         $res = mysqli_query($my_db, $sql) or die (mysqli_error($my_db));
 

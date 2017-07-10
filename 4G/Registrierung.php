@@ -57,6 +57,17 @@
                                     <input type="password" placeholder="Passwort wiederholen" class="form-control"
                                            name="passwordWdh">
                                 </div>
+                                <div class="form-group">
+                                    <label for="alter">Alter:</label>
+                                    <input type="alter" placeholder="Alter" class="form-control"
+                                           name="alter">
+                                </div>
+                                <div class="form-group">
+                                    <label for="geschlecht">Geschlecht:</label>
+                                    <input type="radio" class="form-control"
+                                           name="geschlecht" value="weiblich">weiblich<br/>
+                                    <input type="radio" class="form-control"
+                                           name="geschlecht" value="männlich">m&auml;nnlich<br/>
                                 <button type="submit" class="btn login-success">Registrieren</button>
                                 <div class="small register">
                                     Du hast bereits einen Account? <a href="index.php"> Anmelden</a>
