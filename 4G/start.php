@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="ressources/css/bootstrap.min.css">
     <link rel="stylesheet" href="ressources/css/custom_styles.css">
+    <link rel="stylesheet" href="style.css">
     <title>Login 4G</title>
 </head>
 
@@ -12,91 +13,6 @@
 <div class="page-header">
     <h1>Four in a Row</h1>
 </div>
-
-<h1 class="startsections">Meine Spiele</h1>
-
-<div class="container">
-    <div class="row vertical-offset-100">
-        <div class="col-md-4 col-md-offset-4">
-            <table class="table table-striped table-hover">
-                <thead>
-                <tr>
-                    <th>Spielname</th>
-                    <th>Gastgeber</th>
-                    <th>Beitreten</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Spiel 1</td>
-                    <td>Felix</td>
-                    <td>
-                        <button type="button" class="btn btn-primary">Beitreten</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Spiel 2</td>
-                    <td>David</td>
-                    <td>
-                        <button type="button" class="btn btn-primary">Beitreten</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Spiel 3</td>
-                    <td>Isabel</td>
-                    <td>
-                        <button type="button" class="btn btn-primary">Beitreten</button>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-</div>
-
-<h1 class="startsections">Offene Spiele</h1>
-
-<div class="container">
-    <div class="row vertical-offset-100">
-        <div class="col-md-4 col-md-offset-4">
-            <table class="table table-striped table-hover">
-                <thead>
-                <tr>
-                    <th>Spielname</th>
-                    <th>Gastgeber</th>
-                    <th>Beitreten</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Spiel 4</td>
-                    <td>Rahel</td>
-                    <td>
-                        <button type="button" class="btn btn-primary">Beitreten</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Spiel 5</td>
-                    <td>Tino</td>
-                    <td>
-                        <button type="button" class="btn btn-primary">Beitreten</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Spiel 6</td>
-                    <td>Jonathan</td>
-                    <td>
-                        <button type="button" class="btn btn-primary">Beitreten</button>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-</div>
-
 
 <?php
 require("ressources/header.inc.php");

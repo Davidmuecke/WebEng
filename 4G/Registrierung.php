@@ -18,7 +18,7 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="panel panel-default">
                     <div class="panel-heading" id="panel-heading">
-                        <h3 class="panel-title">Anmelden</h3>
+                        <h3 class="panel-title">Registrierung</h3>
                     </div>
                     <div class="panel-body">
                         <form accept-charset="UTF-8" role="form" action="thankYou.php" method="get">
@@ -59,7 +59,7 @@
                                 </div>
                                 <button type="submit" class="btn login-success">Registrieren</button>
                                 <div class="small register">
-                                    Du hast bereits einen Account? <a href="Registrierung.php"> Anmelden</a>
+                                    Du hast bereits einen Account? <a href="index.php"> Anmelden</a>
                                 </div>
                             </fieldset>
                         </form>
