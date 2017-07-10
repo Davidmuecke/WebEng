@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="ressources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="ressources/css/custom_styles.css">
+    <title>Registrierung</title>
+</head>
+
 <?php
 require("ressources/dba.php");
 //Registrierungs logik
@@ -14,8 +23,12 @@ if(isset($_REQUEST['vorname'])&& isset($_REQUEST['nachname'])&&isset($_REQUEST['
         $sql= "INSERT INTO unbestaetigt (challenge, userName, vorname, nachname, mail, password) VALUES('".$challenge."','".$userName."','".$vorname."','".$nachname."','".$mail."','".$pas."')";
        // echo $sql;
         $res = mysqli_query($my_db, $sql) or die (mysqli_error($my_db));
-        echo"<h2>Danke Für die Registrierung bei 4G</h2>";
-        echo "<p>Bitte klicke auf den Link in diesr Email, um dein Konto zu bestätigen <a href='thankYou.php?challenge=".$challenge."'>bestätigen</a></p>";
+        echo "<div class=\"page-header\">
+                <h2>Danke für die Registrierung bei 4G</h2>
+              </div>";
+        echo "<div class=\"alert alert-info\">
+                <strong>Info!</strong> Bitte klicke auf den folgenden Link, um dein Konto zu <a href='thankYou.php?challenge=".$challenge."'>bestätigen</a>.
+              </div>";
     } else{
         echo"password error!";
     }
@@ -39,8 +52,14 @@ if(isset($_REQUEST['challenge'])){
         //echo "<br>".$sql."<br>";
         $res = mysqli_query($my_db, $sql) or die (mysqli_error($my_db));
         /* Wenn Abfrage erfolgreich war: */
-        echo"<p>du kannst dich jetzt <a href='index.php'> anmelden</a></p>";
+        echo "<div class=\"page-header\">
+                <h2>Danke für die Registrierung bei 4G</h2>
+              </div>";
+        echo "<div class=\"alert alert-success\">
+                <strong>Geschafft!</strong> Du kannst dich jetzt <a href='index.php'>anmelden</a>
+              </div>";
     }
 }
 ?>
+</html>
 

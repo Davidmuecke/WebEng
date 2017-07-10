@@ -1,0 +1,81 @@
+
+body {
+    background: #0C2C52; /* For browsers that do not support gradients */
+    background: -webkit-radial-gradient(#0C2C52, #5E9DC8, #DCF0F7); /* Safari 5.1 to 6.0 */
+    background: -o-radial-gradient(#0C2C52, #5E9DC8, #DCF0F7); /* For Opera 11.6 to 12.0 */
+    background: -moz-radial-gradient(#0C2C52, #5E9DC8, #DCF0F7); /* For Firefox 3.6 to 15 */
+    background: repeating-radial-gradient(#0C2C52, #5E9DC8, #DCF0F7) no-repeat center center fixed; /* Standard syntax */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-color: #0C2C52;
+}
+
+.page-header {
+    color: #0C2C52;
+    text-align: center;
+}
+
+.panel-title {
+    background-color: #5E9DC8;
+    color: #DCF0F7;
+}
+
+#panel-heading, thead {
+    background-color: #5E9DC8;
+}
+
+.panel-body {
+    background-color: #DCF0F7;
+    color: #5E9DC8;
+}
+
+.login-success {
+    background-color: #5E9DC8;
+    color: #DCF0F7;
+}
+
+.register {
+    margin-top: 5px;
+}
+
+.footer {
+    color: #DCF0F7;
+    text-align: center;
+}
+
+button {
+    width: 100%;
+}
+
+button:hover {
+    background-color: #5E9DC8;
+    color: #DCF0F7;
+    opacity: 0.75;
+}
+
+.alert {
+    text-align: center;
+}
+
+td:nth-child(odd) {
+    background-color: #DCF0F7;
+}
+
+td:nth-child(even) {
+    background-color: #5E9DC8;
+}
+
+.startsections {
+    text-align: center;
+    color: #DCF0F7;
+}
