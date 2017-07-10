@@ -41,17 +41,21 @@ if(isset($_SESSION['userName'])) {
     $res = mysqli_query($my_db,"SELECT * FROM spiel WHERE spieler1='".$user."' OR spieler2='".$user."'")or die (mysqli_error($my_db));
     $game =  mysqli_fetch_assoc($res);
     while($game['ID']){
+        echo"<div class= 'gameListItem'>";
         echo"<p>Spiel ".$game['ID']."<br>Spieler1 ".$game['spieler1']."<br> Spieler2 ".$game['spieler2']."</p>";
         echo"<a href='start.php?game=".$game["ID"]."'><button>zum Spiel</button></a>";
         $game =  mysqli_fetch_assoc($res);
+        echo"</div>";
     }
     echo"<h2>offene Spiele</h2>";
     $res = mysqli_query($my_db,"SELECT * FROM spielneu WHERE spieler1 !='".$user."'")or die (mysqli_error($my_db));
     $game =  mysqli_fetch_assoc($res);
     while($game['ID']){
+        echo"<div class= 'gameListItem'>";
         echo"<p>Spiel ".$game['ID']."<br>Spieler1 ".$game['spieler1']."</p>";
         echo"<a href='start.php?beitreten=".$game['ID']."'><button>beitreten</button></a>";
         $game =  mysqli_fetch_assoc($res);
+        echo"</div>";
     }
     //echo"<a href=''>reload</a>";
 } else{
