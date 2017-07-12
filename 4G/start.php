@@ -81,7 +81,7 @@ require("ressources/header.inc.php");
     -->
 </script>
 
-<div id="background">';
+<div id="background">
 
     <?php
     date_default_timezone_set('Europe/Berlin');

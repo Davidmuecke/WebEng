@@ -57,6 +57,13 @@
     width: 86vh;
     height: 100vh;
     margin: auto;
-
 }
 
+p {
+    background-color: red;
+}
+
+#background h2 {
+    text-align: center;
+    color: #DCF0F7;
+}
