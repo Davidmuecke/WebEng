@@ -42,15 +42,15 @@ if(isset($_SESSION['userName'])) {
     $game =  mysqli_fetch_assoc($res);
     while($game['ID']){
         echo"<p>Spiel ".$game['ID']."<br>Spieler1 ".$game['spieler1']."<br> Spieler2 ".$game['spieler2']."</p>";
-        echo"<a href='start.php?game=".$game["ID"]."'><button>zum Spiel</button></a>";
+        echo"<a href='start.php?game=".$game["ID"]."'><button class='btn login-success'>zum Spiel</button></a>";
         $game =  mysqli_fetch_assoc($res);
     }
-    echo"<h2>offene Spiele</h2>";
+    echo"<h2>Offene Spiele</h2>";
     $res = mysqli_query($my_db,"SELECT * FROM spielneu WHERE spieler1 !='".$user."'")or die (mysqli_error($my_db));
     $game =  mysqli_fetch_assoc($res);
     while($game['ID']){
         echo"<p>Spiel ".$game['ID']."<br>Spieler1 ".$game['spieler1']."</p>";
-        echo"<a href='start.php?beitreten=".$game['ID']."'><button>beitreten</button></a>";
+        echo"<a href='start.php?beitreten=".$game['ID']."'><button class='btn login-success'>Beitreten</button></a>";
         $game =  mysqli_fetch_assoc($res);
     }
     //echo"<a href=''>reload</a>";
