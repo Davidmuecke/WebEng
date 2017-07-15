@@ -7,11 +7,11 @@
  */
 ?>
 
-    <div class="footer">
+    <footer class="footer navbar-fixed-bottom">
         <div id="mail" >
         4Games Studio (c) 2017 Rothebühlplatz 41 70176 Stuttgart Email:
         </div>
-    </div>
+    </footer>
     <script type="application/javascript" >
         function mail() {
             var  eins = "kontakt";

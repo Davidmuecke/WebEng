@@ -4,17 +4,17 @@ session_start();
 require("dba.php");
 
 //login check
-if(!isset($_SESSION['userName'])){
-    if(isset($_REQUEST['userName']) && isset($_REQUEST['password'])){
+if (!isset($_SESSION['userName'])) {
+    if (isset($_REQUEST['userName']) && isset($_REQUEST['password'])) {
         //Benutzer verifikation
-        $username = mysqli_real_escape_string($my_db,htmlentities($_REQUEST['userName']));
-        $pas = mysqli_real_escape_string($my_db,htmlentities($_REQUEST['password']));
+        $username = mysqli_real_escape_string($my_db, htmlentities($_REQUEST['userName']));
+        $pas = mysqli_real_escape_string($my_db, htmlentities($_REQUEST['password']));
 
-        $sql = "SELECT * FROM benutzer WHERE userName='".$username."'";
-        $res = mysqli_query($my_db,$sql);
+        $sql = "SELECT * FROM benutzer WHERE userName='" . $username . "'";
+        $res = mysqli_query($my_db, $sql);
         $res = mysqli_fetch_assoc($res);
 
-        if(password_verify($pas,$res['password'])){
+        if (password_verify($pas, $res['password'])) {
             // login erfolgreich
             $_SESSION['userName'] = $username;
         } else {
@@ -23,7 +23,7 @@ if(!isset($_SESSION['userName'])){
             die();
         }
 
-    }else {
+    } else {
         //weiterleitung auf log-in Seite
         header("Location: index.php");
         die();
@@ -38,9 +38,19 @@ if(!isset($_SESSION['userName'])){
 </head>
 
 <body onload="mail()">
- <div class='header'>
-<?php
- echo "Hallo: ".$_SESSION['userName'];
-?>
-     <a href='logout.php'>ausloggen</a>
- </div>
+<nav class="navbar navbar-static-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <?php
+                echo "Hallo: " . $_SESSION['userName'];
+                ?></a>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href='logout.php'>Ausloggen</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+</body>
+</html>

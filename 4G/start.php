@@ -82,34 +82,33 @@ require("ressources/header.inc.php");
 </script>
 
 <div id="background">
+                <?php
+                date_default_timezone_set('Europe/Berlin');
+                $current_date = date('d/m/Y == H:i:s');
 
-    <?php
-    date_default_timezone_set('Europe/Berlin');
-    $current_date = date('d/m/Y == H:i:s');
+                echo $current_date;
+                if (isset($_REQUEST['game'])) {
+                    $id = mysqli_real_escape_string($my_db, htmlentities($_REQUEST['game']));
+                    echo "<script>getGame(" . $id . ");</script>";
 
-    echo $current_date;
-    if (isset($_REQUEST['game'])) {
-        $id = mysqli_real_escape_string($my_db, htmlentities($_REQUEST['game']));
-        echo "<script>getGame(" . $id . ");</script>";
+                } else {
+                    // require("ressources/gameList.php");
 
-    } else {
-        // require("ressources/gameList.php");
+                    if (isset($_REQUEST['neu'])) {
+                        $neu = mysqli_real_escape_string($my_db, htmlentities($_REQUEST['neu']));
+                        echo "<script>getListNeuesSpiel();</script>";
+                    } elseif (isset($_REQUEST['beitreten'])) {
+                        $beitreten = mysqli_real_escape_string($my_db, htmlentities($_REQUEST['beitreten']));
+                        echo "<script>getListBeitreten(" . $beitreten . ");</script>";
+                    } else {
+                        echo "<script>getList();</script>";
+                    }
 
-        if (isset($_REQUEST['neu'])) {
-            $neu = mysqli_real_escape_string($my_db, htmlentities($_REQUEST['neu']));
-            echo "<script>getListNeuesSpiel();</script>";
-        } elseif (isset($_REQUEST['beitreten'])) {
-            $beitreten = mysqli_real_escape_string($my_db, htmlentities($_REQUEST['beitreten']));
-            echo "<script>getListBeitreten(" . $beitreten . ");</script>";
-        } else {
-            echo "<script>getList();</script>";
-        }
-
-    }
-    ?>
-</div>
-<?php
-require("ressources/footer.inc.php");
-?>
+                }
+                ?>
+            </div>
+            <?php
+            require("ressources/footer.inc.php");
+            ?>
 </body>
 </html>
