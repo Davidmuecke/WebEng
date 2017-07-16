@@ -30,7 +30,6 @@
     background-color: #42689d;
     min-width: 30px; min-height: 30px;
     width: 9.6vh; height: 9.6vh;
-    margin: auto; padding: 1vh;
     border-top: solid; border-left: solid; border-width: 0.4vh;
 
 }
@@ -52,11 +51,12 @@
 }
 /* ids*/
 
-#game {
-    min-width: 300px;
-    width: 86vh;
-    height: 100vh;
-    margin: auto;
+.game {
+    background-color: #5E9DC8;
+}
+
+.spielfeld {
+    align-content: center;
 }
 
 #background h2 {

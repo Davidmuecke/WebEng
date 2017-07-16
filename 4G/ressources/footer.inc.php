@@ -20,6 +20,5 @@
             mail.appendChild(document.createTextNode(eins+"@"+zwei+".de"));
             mail.setAttribute("href","mailto:"+eins+"@"+zwei+".de");
             document.getElementById("mail").appendChild(mail);
-
         }
     </script>
