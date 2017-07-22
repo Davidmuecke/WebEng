@@ -88,7 +88,7 @@ echo "<div id=\"game\">";
 
 if(isset($_REQUEST['game'])){
     $gameID =  mysqli_real_escape_string($my_db,htmlentities($_REQUEST['game']));
-    $user = $_SESSION['userName'];
+    $user = $_SESSION['login'];
     //db Abfrage zum Spiel
     $res = mysqli_query($my_db,"SELECT * FROM spiel WHERE ID ='".$gameID."'")  or die (mysqli_error($my_db));
     $game =  mysqli_fetch_assoc($res);
@@ -148,7 +148,7 @@ if(isset($_REQUEST['game'])){
         //Handlungsinfo
         if($game['amzug']=="ENDE"){
             if(gewonnen($spielstand)==$myID){
-                echo"<div class='sieger'><p>Du hast gegen $gegner gewnonnen!</p>";
+                echo"<div class='sieger'><p>Du hast gegen $gegner gewonnen!</p>";
             } else {
                 echo"<div class='verlierer'><p>Du hast gegen $gegner verloren!</p>";
             }

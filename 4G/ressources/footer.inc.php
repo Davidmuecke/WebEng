@@ -9,7 +9,7 @@
 
     <div class="footer">
         <div id="mail" >
-        4Games Studio (c) 2017 Rothebühlplatz 41 70176 Stuttgart Email:
+        4Games Studio (c) 2017 Rotebühlplatz 41 70176 Stuttgart Email:
         </div>
     </div>
     <script type="application/javascript" >
