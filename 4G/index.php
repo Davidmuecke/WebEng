@@ -36,7 +36,7 @@
                                     <label for="userName">Email oder Nutzername:</label>
                                     <input type="text" placeholder="E-Mail oder Nutzername eingeben"
                                            class="form-control"
-                                           name="userName">
+                                           name="login">
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Passwort:</label>
