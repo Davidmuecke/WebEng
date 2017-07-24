@@ -18,6 +18,8 @@ if(!isset($_SESSION['login'])){
             $res = mysqli_query($my_db,$sql);
             $row= mysqli_fetch_array($res);
             $_SESSION['login'] = $row['userName'];
+
+            session_regenerate_id();
         } else {
             echo "Fehler";
             header("Location: index.php?error=login");
@@ -40,15 +42,23 @@ if(!isset($_SESSION['login'])){
 </head>
 
 <body onload="mail()">
-
+  
 <nav class="navbar navbar-static-top">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">
                 <?php
-                echo "Hallo: " . $_SESSION['userName'];
-                echo '<img height="30" width="30" src="ressources/image.php">';
-                ?></a>
+                  echo "Hallo ".$_SESSION['login']. "! ";
+                  $login = $_SESSION['login'];
+                  $sql = "SELECT bild FROM benutzer WHERE userName='" .$login. "' OR email = '".$login."' ";
+                  $res = mysqli_query($my_db, $sql);
+                  $row = mysqli_fetch_array($res);
+                  $id = $row['bild'];
+                  if($id!='0') {
+                    echo '<img width="4%" height="auto" src="ressources/image.php">';
+                   }
+                ?>
+              </a>
             <ul class="nav navbar-nav">
                 <li class="active"><a href='logout.php'>Ausloggen</a></li>
             </ul>
@@ -58,4 +68,5 @@ if(!isset($_SESSION['login'])){
 
 </body>
 </html>
+
 
