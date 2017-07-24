@@ -33,7 +33,7 @@ if(isset($_SESSION['login'])) {
     $res = mysqli_query($my_db,"SELECT * FROM spielneu WHERE spieler1 ='".$user."'")or die (mysqli_error($my_db));
     $game =  mysqli_fetch_assoc($res);
     if($game['ID']){
-        echo"<p>Du hast schon ein neues Spiel erstellt( Spiel ".$game['ID']."). Du musst warten bis ein anderer Spieler deinem Spiel beitritt</p>";
+        echo"<p>Du hast schon ein neues Spiel erstellt (Spiel ".$game['ID']."). Du musst warten bis ein anderer Spieler deinem Spiel beitritt!</p>";
     } else {
         echo"<a href='start.php?neu=game'><button>Neues Spiel erstellen</button></a>";
     }

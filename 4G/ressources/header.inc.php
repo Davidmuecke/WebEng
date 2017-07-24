@@ -16,6 +16,8 @@ if(!isset($_SESSION['login'])){
             $res = mysqli_query($my_db,$sql);
             $row= mysqli_fetch_array($res);
             $_SESSION['login'] = $row['userName'];
+
+            session_regenerate_id();
         } else {
             echo "Fehler";
             header("Location: index.php?error=login");
@@ -41,7 +43,14 @@ if(!isset($_SESSION['login'])){
 <div class='header'>
     <?php
     echo "Hallo ".$_SESSION['login']. "! ";
-    echo '<img height="30" width="30" src="ressources/image.php">';
+    $login = $_SESSION['login'];
+    $sql = "SELECT bild FROM benutzer WHERE userName='" .$login. "' OR email = '".$login."' ";
+    $res = mysqli_query($my_db, $sql);
+    $row = mysqli_fetch_array($res);
+    $id = $row['bild'];
+    if($id!='0') {
+        echo '<img width="4%" height="auto" src="ressources/image.php">';
+    }
     ?>
     <a href='logout.php'>ausloggen</a>
 </div>
