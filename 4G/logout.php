@@ -10,6 +10,7 @@
 <?php
 session_start();
 session_destroy();
+
 echo "<div class=\"alert alert-info\">
                 <strong>Info!</strong> Du wurdest ausgeloggt! <a href='index.php'>Wieder anmelden</a>
               </div>";
@@ -20,3 +21,4 @@ require("ressources/footer.inc.php");
 ?>
 
 </html>
+

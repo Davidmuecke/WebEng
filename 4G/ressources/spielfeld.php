@@ -89,10 +89,12 @@ function getCell($col, $row, $stand)
  * Time: 22:34
  */
 //Spielfeld generieren
+
 echo "<div class='col-md-8 col-md-offset-2 game'>";
 if (isset($_REQUEST['game'])) {
-    $gameID = mysqli_real_escape_string($my_db, htmlentities($_REQUEST['game']));
-    $user = $_SESSION['userName'];
+    $gameID =  mysqli_real_escape_string($my_db,htmlentities($_REQUEST['game']));
+    $user = $_SESSION['login'];
+
     //db Abfrage zum Spiel
     $res = mysqli_query($my_db, "SELECT * FROM spiel WHERE ID ='" . $gameID . "'") or die (mysqli_error($my_db));
     $game = mysqli_fetch_assoc($res);
