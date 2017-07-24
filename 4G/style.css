@@ -1,6 +1,6 @@
 /* classes */
 
-.cell{
+.cell {
     /*margin: 4%; */
     background-color: white;
     border-radius: 50%;
@@ -10,12 +10,12 @@
 
 .column {
     float: left;
-    background-color: #f757ee;
+    color: #0C2C52;
     min-width: 35px;
     width: 12vh;
 }
 
-.lastColumn .row{
+.lastColumn .row {
     border-right: solid; border-width: 0.4vh;
 }
 
@@ -27,7 +27,7 @@
 
 .row {
     display: block;
-    background-color: #42689d;
+    color: #5E9DC8;
     min-width: 30px; min-height: 30px;
     width: 9.6vh; height: 9.6vh;
     border-top: solid; border-left: solid; border-width: 0.4vh;
@@ -53,13 +53,14 @@
 
 .game {
     background-color: #5E9DC8;
-}
-
-.spielfeld {
-    align-content: center;
+    padding-bottom: 20px;
 }
 
 #background h2 {
     text-align: center;
     color: #DCF0F7;
+}
+
+.vierfeld {
+    padding-bottom: 10px;
 }

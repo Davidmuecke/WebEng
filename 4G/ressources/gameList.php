@@ -41,7 +41,7 @@ if (isset($_SESSION['userName'])) {
     if ($game['ID']) {
         echo "<p>Du hast schon ein neues Spiel erstellt( Spiel " . $game['ID'] . "). Du musst warten bis ein anderer Spieler deinem Spiel beitritt</p>";
     } else {
-        echo "<a href='start.php?neu=game'><button>Neues Spiel erstellen</button></a>";
+        echo "<a href='start.php?neu=game'><button class='btn login-success'>Neues Spiel erstellen</button></a>";
     }
     echo "</div>";
     echo "</div>";

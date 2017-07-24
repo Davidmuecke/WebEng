@@ -90,7 +90,6 @@ function getCell($col, $row, $stand)
  */
 //Spielfeld generieren
 echo "<div class='col-md-8 col-md-offset-2 game'>";
-
 if (isset($_REQUEST['game'])) {
     $gameID = mysqli_real_escape_string($my_db, htmlentities($_REQUEST['game']));
     $user = $_SESSION['userName'];
@@ -149,17 +148,16 @@ if (isset($_REQUEST['game'])) {
         }
 
         //Spielfeld zeichnen
-        echo "<div class='spielfeld'>";
         echo "<h2>Spiel <strong>" . $game['ID'] . "</strong>: <strong>" . $user . "</strong> gegen <strong>" . $gegner . "</strong></h2>";
         //Handlungsinfo
         if ($game['amzug'] == "ENDE") {
             if (gewonnen($spielstand) == $myID) {
-                echo "<div class='sieger'><p>Du hast gegen $gegner gewnonnen!</p>";
+                echo "<div class='sieger alert alert-success'><strong>Info!</strong> Du hast gegen $gegner gewonnen!.</div>";
             } else {
-                echo "<div class='verlierer'><p>Du hast gegen $gegner verloren!</p>";
+                echo "<div class='verlierer alert alert-danger'><strong>Info!</strong> Du hast gegen $gegner verloren!.</div>";
             }
 
-        } elseif ($game['amzug'] == $user) {
+        } else if ($game['amzug'] == $user) {
             echo "<div class='alert alert-info'><strong>Info!</strong> Du bist am Zug.</div>";
         } else {
             echo "<div class=\"alert alert-danger\">
@@ -167,6 +165,8 @@ if (isset($_REQUEST['game'])) {
                   </div>";
 
         }
+
+        echo "<div class='vierfeld col-md-offset-2'>";
         //Eigentliches 4Gewinnt Feld
         $column = 0;
         $row = 0;
@@ -202,7 +202,6 @@ if (isset($_REQUEST['game'])) {
             $column++;
             echo "</a>";
         }
-        echo "</div>";
 
     } else {
         echo "<div class='alert alert-danger'><strong>Achtung!</strong> Du bist nicht angemeldet oder das Spiel ist abgelaufen</div>";
@@ -210,5 +209,7 @@ if (isset($_REQUEST['game'])) {
 } else {
     echo "<div class='alert alert-danger'><strong>Achtung!</strong> Du bist nicht angemeldet oder das Spiel ist abgelaufen</div>";
 }
-echo "<a href='start.php'><button class='btn btn-info'>zurück zur Übersicht</button></a>";
+echo "</div>";
+echo "<a href='start.php'><button class='btn btn-info'>Zurück zur Übersicht</button></a>";
+
 echo "</div>";
