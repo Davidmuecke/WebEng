@@ -49,7 +49,8 @@ input[type=text], input[type=password] {
 }
 
 .footer {
-    color: #DCF0F7;
+    background-color: #DCF0F7;
+    color: #5E9DC8;
     text-align: center;
 }
 
@@ -67,15 +68,18 @@ button:hover {
     text-align: center;
 }
 
-td:nth-child(odd) {
-    background-color: #DCF0F7;
-}
-
-td:nth-child(even) {
-    background-color: #5E9DC8;
-}
-
 .startsections {
     text-align: center;
     color: #DCF0F7;
+}
+
+.navbar {
+    background-color: #DCF0F7;
+    color: #5E9DC8;
+    text-align: center;
+}
+
+.nav > li > a:hover{
+    background-color: #DCF0F7;
+    color: #0C2C52;
 }
