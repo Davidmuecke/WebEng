@@ -61,17 +61,17 @@
                                 <div class="form-group">
                                     <label for="userAlter">Alter:</label>
                                     <input type="text" placeholder="Alter" class="form-control"
-                                           name="userAlter" required>
+                                           name="userAlter">
                                 </div>
                                 <div class="form-group">
                                     <label for="geschlecht">Geschlecht:</label><br/>
                                     <input type="radio"
-                                           name="geschlecht" value="weiblich" required> weiblich<br/>
+                                           name="geschlecht" value="weiblich"> weiblich<br/>
                                     <input type="radio"
                                            name="geschlecht" value="männlich"> m&auml;nnlich<br/><br/>
                                     <div class="form-group">
                                         <label for="bild">Bild:</label>
-                                        <input type="file" name="bild_daten" required>
+                                        <input type="file" name="bild_daten">
                                     </div>
                                     <button type="submit" class="btn login-success">Registrieren</button>
                                     <div class="small register">
