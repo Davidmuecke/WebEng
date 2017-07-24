@@ -8,8 +8,8 @@ session_start();
  */
 $spielstandNeu = "o,o,o,o,o,o;o,o,o,o,o,o;o,o,o,o,o,o;o,o,o,o,o,o;o,o,o,o,o,o;o,o,o,o,o,o;o,o,o,o,o,o";
 require("dba.php");
-if(isset($_SESSION['userName'])) {
-    $user= $_SESSION['userName'];
+if(isset($_SESSION['login'])) {
+    $user= $_SESSION['login'];
     if (isset($_REQUEST['neu'])) {
         //neues Spiel hinzufügen
         $res = mysqli_query($my_db,"SELECT * FROM spielneu WHERE spieler1 ='".$user."'")  or die (mysqli_error($my_db));

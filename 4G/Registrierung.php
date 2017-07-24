@@ -21,46 +21,62 @@
                         <h3 class="panel-title">Registrierung</h3>
                     </div>
                     <div class="panel-body">
-                        <form accept-charset="UTF-8" role="form" action="thankYou.php" method="get">
+                        <form accept-charset="UTF-8" role="form" action="thankYou.php" method="post" enctype='multipart/form-data'>
                             <fieldset>
                                 <div class="form-group">
                                     <label for="vorname">Vorname:</label>
                                     <input type="text" placeholder="Vorname"
                                            class="form-control"
-                                           name="vorname">
+                                           name="vorname" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="nachname">Nachname:</label>
                                     <input type="text" placeholder="Nachname"
                                            class="form-control"
-                                           name="nachname">
+                                           name="nachname" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="mail">E-Mail:</label>
                                     <input type="text" placeholder="E-Mail"
                                            class="form-control"
-                                           name="mail">
+                                           name="mail"
+                                           pattern="[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="userName">Benutzername:</label>
                                     <input type="text" placeholder="Benutzername"
                                            class="form-control"
-                                           name="userName">
+                                           name="userName" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Passwort:</label>
                                     <input type="password" placeholder="Passwort eingeben" class="form-control"
-                                           name="password">
+                                           name="password" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="passwordWdh">Passwort wiederholen:</label>
                                     <input type="password" placeholder="Passwort wiederholen" class="form-control"
-                                           name="passwordWdh">
+                                           name="passwordWdh" required>
                                 </div>
-                                <button type="submit" class="btn login-success">Registrieren</button>
-                                <div class="small register">
-                                    Du hast bereits einen Account? <a href="index.php"> Anmelden</a>
+                                <div class="form-group">
+                                    <label for="userAlter">Alter:</label>
+                                    <input type="text" placeholder="Alter" class="form-control"
+                                           name="userAlter">
                                 </div>
+                                <div class="form-group">
+                                    <label for="geschlecht">Geschlecht:</label><br/>
+                                    <input type="radio"
+                                           name="geschlecht" value="weiblich"> weiblich<br/>
+                                    <input type="radio"
+                                           name="geschlecht" value="männlich"> m&auml;nnlich<br/><br/>
+                                    <div class="form-group">
+                                        <label for="bild">Bild:</label>
+                                        <input type="file" name="bild_daten">
+                                    </div>
+                                    <button type="submit" class="btn login-success">Registrieren</button>
+                                    <div class="small register">
+                                        Du hast bereits einen Account? <a href="index.php"> Anmelden</a>
+                                    </div>
                             </fieldset>
                         </form>
                     </div>
