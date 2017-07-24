@@ -2,6 +2,7 @@
 session_start();
 require("dba.php");
 //login check
+
 if(!isset($_SESSION['login'])){
     if(isset($_REQUEST['login']) && isset($_REQUEST['password'])){
         //Benutzer verifikation
@@ -10,12 +11,15 @@ if(!isset($_SESSION['login'])){
         $sql = "SELECT * FROM benutzer WHERE userName='".$login."' OR email='".$login."'";
         $res = mysqli_query($my_db,$sql);
         $res = mysqli_fetch_assoc($res);
+      
         if(password_verify($pas,$res['password'])){
             // login erfolgreich
             $sql = "SELECT userName FROM benutzer WHERE userName='".$login."' OR email='".$login."'";
             $res = mysqli_query($my_db,$sql);
             $row= mysqli_fetch_array($res);
             $_SESSION['login'] = $row['userName'];
+
+            session_regenerate_id();
         } else {
             echo "Fehler";
             header("Location: index.php?error=login");
@@ -23,7 +27,7 @@ if(!isset($_SESSION['login'])){
         }
     }
     else {
-        //weiterleitung auf log-in Seite
+        //Weiterleitung auf log-in Seite
         header("Location: index.php");
         die();
     }
@@ -38,26 +42,31 @@ if(!isset($_SESSION['login'])){
 </head>
 
 <body onload="mail()">
-<div class='header'>
-    <?php
-    echo "Hallo ".$_SESSION['login']. "! ";
-    //bild auslesen/ausgeben
-    $sql = "select bilder.bild_daten, bilder.bild_name, bilder.bild_typ, bilder.bild_size from bilder, benutzer where bilder.ID=benutzer.bild";
-    $query = mysqli_query($my_db, $sql);
-    if (mysqli_num_rows($query)) {
-        $ein = mysqli_fetch_object($query);
-        $ctype=NULL;
-        switch( $ein->bild_typ ) {
-            case "gif": $ctype="image/gif"; break;
-            case "png": $ctype="image/png"; break;
-            case "jpeg":
-            case "jpg": $ctype="image/jpeg"; break;
-            default:
-        }
+  
+<nav class="navbar navbar-static-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <?php
+                  echo "Hallo ".$_SESSION['login']. "! ";
+                  $login = $_SESSION['login'];
+                  $sql = "SELECT bild FROM benutzer WHERE userName='" .$login. "' OR email = '".$login."' ";
+                  $res = mysqli_query($my_db, $sql);
+                  $row = mysqli_fetch_array($res);
+                  $id = $row['bild'];
+                  if($id!='0') {
+                    echo '<img width="4%" height="auto" src="ressources/image.php">';
+                   }
+                ?>
+              </a>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href='logout.php'>Ausloggen</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
-        header('Content-type: ' . $ctype);
-        echo '<img height="30" width="30" src="$ein->bild_daten">';
-    }
-    ?>
-    <a href='logout.php'>ausloggen</a>
-</div>
+</body>
+</html>
+
+
