@@ -8,7 +8,7 @@ if(isset($_SESSION['login'])) {
     $row = mysqli_fetch_array($res);
     $id = $row['bild'];
     //bild auslesen/ausgeben
-    $sql = "select bilder.bild_daten, bilder.bild_name, bilder.bild_typ, bilder.bild_size from bilder, benutzer where benutzer.bild='$id'";
+    $sql = "SELECT bilder.bild_daten, bilder.bild_name, bilder.bild_typ, bilder.bild_size FROM bilder WHERE ID='$id'";
     $query = mysqli_query($my_db, $sql);
     if (mysqli_num_rows($query)) {
         $ein = mysqli_fetch_object($query);
