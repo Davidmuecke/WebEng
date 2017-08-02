@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="refresh" time="600" src="logout.php">
     <link rel="stylesheet" href="ressources/css/bootstrap.min.css">
     <link rel="stylesheet" href="ressources/css/custom_styles.css">
     <link rel="stylesheet" href="style.css">

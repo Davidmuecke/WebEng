@@ -1,5 +1,11 @@
 <?php
 session_start();
+if(isset($_SESSION['login'])) {
+    $login = $_SESSION['login'];
+}
+else {
+    header('Location: index.php');
+}
 require("dba.php");
 /**
  * Überprüft, ob das Spiel gewonnen wurde
@@ -186,14 +192,40 @@ if (isset($_REQUEST['game'])) {
                 } else {
                     echo "<div class=\"row\">";
                 }
+
+                $sql = "SELECT farbe FROM spiel WHERE ID='" . $game['ID'] . "'";
+                $res = mysqli_query($my_db, $sql);
+                $row = mysqli_fetch_array($res);
+                $farbe = $row['farbe'];
                 echo "<div class=\" ";
-                if ($spielstand[$column][$row] == 1) {
-                    echo "sp1";
-                } elseif ($spielstand[$column][$row] == 2) {
-                    echo "sp2";
-                } else {
-                    echo "cell";
+                if($farbe == "rg") {
+                    if ($spielstand[$column][$row] == 1) {
+                        echo "rot";
+                    } elseif ($spielstand[$column][$row] == 2) {
+                        echo "gelb";
+                    } else {
+                        echo "cell";
+                    }
                 }
+                if($farbe == "lg") {
+                    if ($spielstand[$column][$row] == 1) {
+                        echo "lila";
+                    } elseif ($spielstand[$column][$row] == 2) {
+                        echo "gruen";
+                    } else {
+                        echo "cell";
+                    }
+                }
+                if($farbe == "og") {
+                    if ($spielstand[$column][$row] == 1) {
+                        echo "orange";
+                    } elseif ($spielstand[$column][$row] == 2) {
+                        echo "grau";
+                    } else {
+                        echo "cell";
+                    }
+                }
+
                 echo "\" id=c" . $column . "_" . $row . ">";
                 echo "<div class=\"dummy\"></div>";
                 echo "</div></div>";
