@@ -21,7 +21,7 @@ if(isset($_SESSION['login'])) {
 
     if (isset($_REQUEST['neu'])) {
         //neues Spiel hinzufügen
-        $farbe = $_POST['farbe'];
+        $farbe = "rg";
 
         $res = mysqli_query($my_db, "SELECT * FROM spielneu WHERE spieler1 ='" . $user . "'") or die (mysqli_error($my_db));
         $game = mysqli_fetch_assoc($res);
@@ -35,7 +35,7 @@ if(isset($_SESSION['login'])) {
         $res = mysqli_query($my_db, "SELECT * FROM spielneu WHERE ID ='" . $beitreten . "' AND spieler1 != '" . $user . "'") or die (mysqli_error($my_db));
         $game = mysqli_fetch_assoc($res);
         if (isset($game['ID'])) {
-            $sql = "SELECT farbe FROM spiel WHERE ID='" . $game['ID'] . "'";
+            $sql = "SELECT farbe FROM spielneu WHERE ID='" . $game['ID'] . "'";
             $res = mysqli_query($my_db, $sql);
             $row = mysqli_fetch_array($res);
             $farbe = $row['farbe'];
@@ -57,15 +57,17 @@ if(isset($_SESSION['login'])) {
          echo"<p>Du hast schon ein neues Spiel erstellt (Spiel ".$game['ID']."). Du musst warten bis ein anderer Spieler deinem Spiel beitritt!</p>";
     } else {
         echo "<form action='start.php?neu=game' method='post'>
-                <select name='farbe' value='farbe' class='btn login-success'required>
-                    <option disabled selected value> -- Wähle eine Farbkombination -- </option>
-                    <option name='rg' value='rg'>Rot/Gelb</option>
+                Wähle eine Farbkombination:
+                <select name='farbe' value='farbe' class='btn login-success'>
+                    <option name='rg' value='rg' selected>Rot/Gelb</option>
                     <option name='lg' value='lg'>Lila/Grün</option>
                     <option name='og' value='og'>Orange/Grau</option>
                 </select>
             <button type='submit' class='btn login-success'>Neues Spiel erstellen</button>
 	    </form>";
-
+        if($_POST['farbe']=="lg" || $_POST['farbe']=="og"){
+            mysqli_query($my_db, "INSERT INTO spiel (farbe) VALUES ('" . $_POST['farbe'] . "')");
+        }
     }
     echo "</div>";
     echo "</div>";

@@ -200,11 +200,13 @@ if (isset($_REQUEST['game'])) {
                 echo "<div class=\" ";
 
                 if ($spielstand[$column][$row] == 1) {
-                    if($farbe=="rg"){echo "rot";}
-                    elseif($farbe=="lg"){echo "lila";}
+                    if($farbe=="lg"){echo "lila";}
                     elseif($farbe=="og"){echo "orange";}
+                    else{echo "rot";}
                 } elseif ($spielstand[$column][$row] == 2) {
-                    echo "gelb";
+                    if($farbe=="lg"){echo "gruen";}
+                    elseif($farbe=="og"){echo "grau";}
+                    else{echo "gelb";}
                 } else {
                     echo "cell";
                 }
