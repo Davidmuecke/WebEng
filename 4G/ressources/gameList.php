@@ -14,7 +14,7 @@ else {
  */
 $spielstandNeu = "o,o,o,o,o,o;o,o,o,o,o,o;o,o,o,o,o,o;o,o,o,o,o,o;o,o,o,o,o,o;o,o,o,o,o,o;o,o,o,o,o,o";
 require("dba.php");
-
+$farbe= null;
 if(isset($_SESSION['login'])) {
     $user= $_SESSION['login'];
     session_regenerate_id();
@@ -56,15 +56,15 @@ if(isset($_SESSION['login'])) {
     if ($game['ID']) {
          echo"<p>Du hast schon ein neues Spiel erstellt (Spiel ".$game['ID']."). Du musst warten bis ein anderer Spieler deinem Spiel beitritt!</p>";
     } else {
-        echo "<form action='start.php?neu=game' method='post'>";
-                echo "<select name='farbe' value='farbe' required>";
-                    echo "<option disabled selected value> -- Wähle eine Farbkombination -- </option>";
-                    echo "<option value='rg'>Rot/Gelb</option>";
-                    echo "<option value='lg'>Lila/Grün</option>";
-                    echo "<option value='og'>Orange/Grau</option>";
-                echo "</select>";
-            echo "<button type='submit' class='btn login-success'>Neues Spiel erstellen</button>";
-	    echo "</form>";
+        echo "<form action='start.php?neu=game' method='post'>
+                <select name='farbe' value='farbe' class='btn login-success'required>
+                    <option disabled selected value> -- Wähle eine Farbkombination -- </option>
+                    <option name='rg' value='rg'>Rot/Gelb</option>
+                    <option name='lg' value='lg'>Lila/Grün</option>
+                    <option name='og' value='og'>Orange/Grau</option>
+                </select>
+            <button type='submit' class='btn login-success'>Neues Spiel erstellen</button>
+	    </form>";
 
     }
     echo "</div>";

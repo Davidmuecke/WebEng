@@ -1,11 +1,52 @@
 <?php
 session_start();
+// übernahmesicherung
 
+// 1. Browser
+
+$_SESSION['browserOne'] = $_SERVER['HTTP_USER_AGENT'];
+$_SESSION['browserTwo'] = get_browser(null, true);
+
+
+// 2. Ip Adresse
+function getUserIP() {
+    if( array_key_exists('HTTP_X_FORWARDED_FOR', $_SERVER) && !empty($_SERVER['HTTP_X_FORWARDED_FOR']) ) {
+        if (strpos($_SERVER['HTTP_X_FORWARDED_FOR'], ',')>0) {
+            $addr = explode(",",$_SERVER['HTTP_X_FORWARDED_FOR']);
+            return trim($addr[0]);
+        } else {
+            return $_SERVER['HTTP_X_FORWARDED_FOR'];
+        }
+    }
+    else {
+        return $_SERVER['REMOTE_ADDR'];
+    }
+}
+
+
+$user_ip = getUserIP();
+$_SESSION['ipAdresse'] = $user_ip;
+
+
+if($_SESSION['ipAdresse'] == getUserIP()) {
+    //echo $_SESSION['ipAdresse'];
+
+    if($_SESSION['browserOne'] == $_SERVER['HTTP_USER_AGENT'] && $_SESSION['browserTwo'] == get_browser(null, true)) {
+        // Forward to Lobby...
+
+        if(isset($_SESSION['login'])) {
+            $login = $_SESSION['login'];
+            //header('Location: start.php');
+            //exit();
+        }
+    }
+} else {
+    echo "SESSION WIRD MIT ÜBERNAHME BEDROHT ----------- ALARM!!!";
+}
 require("dba.php");
 //login check
 
-if(!isset($_SESSION['login']) /*&& isset($_SESSION['HTTP_USER_AGENT'])*/){
-    //if ($_SESSION['HTTP_USER_AGENT'] != md5($_SERVER['HTTP_USER_AGENT'])) {
+if(!isset($_SESSION['login'])){
         if (isset($_REQUEST['login']) && isset($_REQUEST['password'])) {
             //Benutzer verifikation
             $login = mysqli_real_escape_string($my_db, htmlentities($_REQUEST['login']));
@@ -32,12 +73,9 @@ if(!isset($_SESSION['login']) /*&& isset($_SESSION['HTTP_USER_AGENT'])*/){
             header("Location: index.php");
             die();
         }
-    //}
 
 
-} /*else {
-    $_SESSION['HTTP_USER_AGENT'] = md5($_SERVER['HTTP_USER_AGENT']);
-}*/
+}
 
 ?>
 

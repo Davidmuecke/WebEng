@@ -176,6 +176,10 @@ if (isset($_REQUEST['game'])) {
 
         echo "<div class='vierfeld col-md-offset-2'>";
         //Eigentliches 4Gewinnt Feld
+        $sql = "SELECT farbe FROM spiel WHERE ID='" . $game['ID'] . "'";
+        $res = mysqli_query($my_db, $sql);
+        $row = mysqli_fetch_array($res);
+        $farbe = $row['farbe'];
         $column = 0;
         $row = 0;
         while ($column < 7) {
@@ -193,37 +197,16 @@ if (isset($_REQUEST['game'])) {
                     echo "<div class=\"row\">";
                 }
 
-                $sql = "SELECT farbe FROM spiel WHERE ID='" . $game['ID'] . "'";
-                $res = mysqli_query($my_db, $sql);
-                $row = mysqli_fetch_array($res);
-                $farbe = $row['farbe'];
                 echo "<div class=\" ";
-                if($farbe == "rg") {
-                    if ($spielstand[$column][$row] == 1) {
-                        echo "rot";
-                    } elseif ($spielstand[$column][$row] == 2) {
-                        echo "gelb";
-                    } else {
-                        echo "cell";
-                    }
-                }
-                if($farbe == "lg") {
-                    if ($spielstand[$column][$row] == 1) {
-                        echo "lila";
-                    } elseif ($spielstand[$column][$row] == 2) {
-                        echo "gruen";
-                    } else {
-                        echo "cell";
-                    }
-                }
-                if($farbe == "og") {
-                    if ($spielstand[$column][$row] == 1) {
-                        echo "orange";
-                    } elseif ($spielstand[$column][$row] == 2) {
-                        echo "grau";
-                    } else {
-                        echo "cell";
-                    }
+
+                if ($spielstand[$column][$row] == 1) {
+                    if($farbe=="rg"){echo "rot";}
+                    elseif($farbe=="lg"){echo "lila";}
+                    elseif($farbe=="og"){echo "orange";}
+                } elseif ($spielstand[$column][$row] == 2) {
+                    echo "gelb";
+                } else {
+                    echo "cell";
                 }
 
                 echo "\" id=c" . $column . "_" . $row . ">";
