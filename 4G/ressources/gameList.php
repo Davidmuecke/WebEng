@@ -22,7 +22,12 @@ if(isset($_SESSION['login'])) {
     $farbe="rg";
     if (isset($_REQUEST['neu'])) {
         //neues Spiel hinzufügen
-
+        if($_REQUEST['neu']=="lg"){
+            $farbe = "lg";
+        }
+        if($_REQUEST['neu']=="og"){
+            $farbe = "og";
+        }
         $res = mysqli_query($my_db, "SELECT * FROM spielneu WHERE spieler1 ='" . $user . "'") or die (mysqli_error($my_db));
         $game = mysqli_fetch_assoc($res);
         if (!isset($game['ID'])) {
@@ -35,7 +40,7 @@ if(isset($_SESSION['login'])) {
         $res = mysqli_query($my_db, "SELECT * FROM spielneu WHERE ID ='" . $beitreten . "' AND spieler1 != '" . $user . "'") or die (mysqli_error($my_db));
         $game = mysqli_fetch_assoc($res);
         if (isset($game['ID'])) {
-            mysqli_query($my_db, "INSERT INTO spiel (spieler1, spieler2, time, spielstand, amzug, farbe) VALUES ('" . $game['spieler1'] . "','" . $user . "','" . $game['time'] . "','" . $spielstandNeu . "','" . $game['spieler1'] . "','" . $farbe . "')") or die (mysqli_error($my_db));
+            mysqli_query($my_db, "INSERT INTO spiel (spieler1, spieler2, time, spielstand, amzug, farbe) VALUES ('" . $game['spieler1'] . "','" . $user . "','" . $game['time'] . "','" . $spielstandNeu . "','" . $game['spieler1'] . "','" . $game['farbe'] . "')") or die (mysqli_error($my_db));
             mysqli_query($my_db, "DELETE FROM spielneu WHERE ID='" . $game['ID'] . "'");
         }
     }
@@ -52,9 +57,9 @@ if(isset($_SESSION['login'])) {
     if ($game['ID']) {
          echo"<p>Du hast schon ein neues Spiel erstellt (Spiel ".$game['ID']."). Du musst warten bis ein anderer Spieler deinem Spiel beitritt!</p>";
     } else {
-        echo "<form action='start.php?neu=game' method='post'>
+        echo "<form action='start.php?' method='post'>
                 Wähle eine Farbkombination:
-                <select name='farbe' class='btn login-success'>
+                <select name='neu' class='btn login-success'>
                     <option name='rg' value='rg' selected>Rot/Gelb</option>
                     <option name='lg' value='lg'>Lila/Grün</option>
                     <option name='og' value='og'>Orange/Grau</option>

@@ -78,7 +78,7 @@ require("ressources/header.inc.php");
     }
 
 
-    -->
+
 </script>
 
 <div id="background">
