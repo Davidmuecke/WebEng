@@ -122,6 +122,11 @@ if (isset($_REQUEST['game'])) {
             $gegner = $game['spieler2'];
             $myID = 1;
         }
+        //farbe festlegen
+        $sql = "SELECT farbe FROM spiel WHERE ID='" . $game['ID'] . "'";
+        $res = mysqli_query($my_db, $sql);
+        $row = mysqli_fetch_array($res);
+        $farbe = $row['farbe'];
         //Zug ausführen
         if (isset($_REQUEST['column']) && $game['amzug'] == $user) {
             $column = mysqli_real_escape_string($my_db, htmlentities($_REQUEST['column']));
@@ -156,13 +161,22 @@ if (isset($_REQUEST['game'])) {
         }
 
         //Spielfeld zeichnen
-        echo "<h2>Spiel <strong>" . $game['ID'] . "</strong>: <strong>" . $user . "</strong> gegen <strong>" . $gegner . "</strong></h2>";
+        if($farbe=="lg"){
+            echo "<h2>Spiel <strong>" . $game['ID'] . "</strong>: <strong class='lila'>" . $user . "</strong> gegen <strong class='gruen'>" . $gegner . "</strong></h2>";
+        }
+        elseif($farbe=="og"){
+            echo "<h2>Spiel <strong>" . $game['ID'] . "</strong>: <strong class='orange'>" . $user . "</strong> gegen <strong class='grau'>" . $gegner . "</strong></h2>";
+        }
+        else{
+            echo "<h2>Spiel <strong>" . $game['ID'] . "</strong>: <strong class='rot'>" . $user . "</strong> gegen <strong class='gelb'>" . $gegner . "</strong></h2>";
+        }
+
         //Handlungsinfo
         if ($game['amzug'] == "ENDE") {
             if (gewonnen($spielstand) == $myID) {
-                echo "<div class='sieger alert alert-success'><strong>Info!</strong> Du hast gegen $gegner gewonnen!.</div>";
+                echo "<div class='sieger alert alert-success'><strong>Info!</strong> Du hast gegen $gegner gewonnen!</div>";
             } else {
-                echo "<div class='verlierer alert alert-danger'><strong>Info!</strong> Du hast gegen $gegner verloren!.</div>";
+                echo "<div class='verlierer alert alert-danger'><strong>Info!</strong> Du hast gegen $gegner verloren!</div>";
             }
 
         } else if ($game['amzug'] == $user) {
@@ -176,10 +190,7 @@ if (isset($_REQUEST['game'])) {
 
         echo "<div class='vierfeld col-md-offset-2'>";
         //Eigentliches 4Gewinnt Feld
-        $sql = "SELECT farbe FROM spiel WHERE ID='" . $game['ID'] . "'";
-        $res = mysqli_query($my_db, $sql);
-        $row = mysqli_fetch_array($res);
-        $farbe = $row['farbe'];
+
         $column = 0;
         $row = 0;
         while ($column < 7) {

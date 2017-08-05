@@ -18,10 +18,10 @@ $farbe= null;
 if(isset($_SESSION['login'])) {
     $user= $_SESSION['login'];
     session_regenerate_id();
-
+    //standard farbe festlegen
+    $farbe="rg";
     if (isset($_REQUEST['neu'])) {
         //neues Spiel hinzufügen
-        $farbe = "rg";
 
         $res = mysqli_query($my_db, "SELECT * FROM spielneu WHERE spieler1 ='" . $user . "'") or die (mysqli_error($my_db));
         $game = mysqli_fetch_assoc($res);
@@ -35,10 +35,6 @@ if(isset($_SESSION['login'])) {
         $res = mysqli_query($my_db, "SELECT * FROM spielneu WHERE ID ='" . $beitreten . "' AND spieler1 != '" . $user . "'") or die (mysqli_error($my_db));
         $game = mysqli_fetch_assoc($res);
         if (isset($game['ID'])) {
-            $sql = "SELECT farbe FROM spielneu WHERE ID='" . $game['ID'] . "'";
-            $res = mysqli_query($my_db, $sql);
-            $row = mysqli_fetch_array($res);
-            $farbe = $row['farbe'];
             mysqli_query($my_db, "INSERT INTO spiel (spieler1, spieler2, time, spielstand, amzug, farbe) VALUES ('" . $game['spieler1'] . "','" . $user . "','" . $game['time'] . "','" . $spielstandNeu . "','" . $game['spieler1'] . "','" . $farbe . "')") or die (mysqli_error($my_db));
             mysqli_query($my_db, "DELETE FROM spielneu WHERE ID='" . $game['ID'] . "'");
         }
@@ -58,16 +54,14 @@ if(isset($_SESSION['login'])) {
     } else {
         echo "<form action='start.php?neu=game' method='post'>
                 Wähle eine Farbkombination:
-                <select name='farbe' value='farbe' class='btn login-success'>
+                <select name='farbe' class='btn login-success'>
                     <option name='rg' value='rg' selected>Rot/Gelb</option>
                     <option name='lg' value='lg'>Lila/Grün</option>
                     <option name='og' value='og'>Orange/Grau</option>
-                </select>
+                </select><br>
             <button type='submit' class='btn login-success'>Neues Spiel erstellen</button>
 	    </form>";
-        if($_POST['farbe']=="lg" || $_POST['farbe']=="og"){
-            mysqli_query($my_db, "INSERT INTO spiel (farbe) VALUES ('" . $_POST['farbe'] . "')");
-        }
+
     }
     echo "</div>";
     echo "</div>";
