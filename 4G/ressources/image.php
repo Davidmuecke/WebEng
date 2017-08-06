@@ -1,5 +1,11 @@
 <?php
 session_start();
+if(isset($_SESSION['login'])) {
+    $login = $_SESSION['login'];
+}
+else {
+    header('Location: index.php');
+}
 require("dba.php");
 if(isset($_SESSION['login'])) {
     $login = $_SESSION['login'];

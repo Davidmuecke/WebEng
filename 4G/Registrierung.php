@@ -24,37 +24,37 @@
                         <form accept-charset="UTF-8" role="form" action="thankYou.php" method="post" enctype='multipart/form-data'>
                             <fieldset>
                                 <div class="form-group">
-                                    <label for="vorname">Vorname:</label>
+                                    <label for="vorname">Vorname: *</label>
                                     <input type="text" placeholder="Vorname"
                                            class="form-control"
                                            name="vorname" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="nachname">Nachname:</label>
+                                    <label for="nachname">Nachname: *</label>
                                     <input type="text" placeholder="Nachname"
                                            class="form-control"
                                            name="nachname" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="mail">E-Mail:</label>
+                                    <label for="mail">E-Mail: *</label>
                                     <input type="text" placeholder="E-Mail"
                                            class="form-control"
                                            name="mail"
                                            pattern="[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="userName">Benutzername:</label>
+                                    <label for="userName">Benutzername: *</label>
                                     <input type="text" placeholder="Benutzername"
                                            class="form-control"
                                            name="userName" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="password">Passwort:</label>
+                                    <label for="password">Passwort: *</label>
                                     <input type="password" placeholder="Passwort eingeben" class="form-control"
                                            name="password" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="passwordWdh">Passwort wiederholen:</label>
+                                    <label for="passwordWdh">Passwort wiederholen: *</label>
                                     <input type="password" placeholder="Passwort wiederholen" class="form-control"
                                            name="passwordWdh" required>
                                 </div>
@@ -74,6 +74,9 @@
                                         <input type="file" name="bild_daten">
                                     </div>
                                     <button type="submit" class="btn login-success">Registrieren</button>
+                                    <div class="small register">
+                                        * = Pflichtfelder
+                                    </div>
                                     <div class="small register">
                                         Du hast bereits einen Account? <a href="index.php"> Anmelden</a>
                                     </div>

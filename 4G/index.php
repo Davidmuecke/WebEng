@@ -13,13 +13,13 @@
         <h1>Four in a Row</h1>
     </div>
 
-    <!-- <?php
+    <?php
     if (isset($_REQUEST['error'])) {
         if ($_REQUEST['error'] == 'login') {
             echo "<div class='error'>Du hast deinen Benutzername oder dein Passwort falsch eingegeben</div>";
         }
     }
-    ?> -->
+    ?>
 
 
     <div class="container">

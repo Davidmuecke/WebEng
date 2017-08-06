@@ -50,7 +50,7 @@ require("ressources/header.inc.php");
 
     function getGame(id) {
         var strURL = "ressources/spielfeld.php";
-        params = "game=" + id;
+        params = "game=" + id ;
         if (zug != -1) {
             params += "&column=" + zug;
             zug = -1;
@@ -61,24 +61,36 @@ require("ressources/header.inc.php");
 
     function getListNeuesSpiel() {
         var strURL = "ressources/gameList.php";
-        params = "neu=game";
+        <?php
+        $farbe="rg";
+        if (isset($_REQUEST['neu'])) {
+            //neues Spiel hinzufügen
+            if($_REQUEST['neu']=="lg"){
+                $farbe = "lg";
+            }
+            if($_REQUEST['neu']=="og"){
+                $farbe = "og";
+            }
+           echo"params = \"neu=".$farbe."\";";
+        }
+        ?>
         sendRequest(strURL, params, "POST");
-        window.setTimeout("getList()", 1500);
+        window.setTimeout("getList()", 500);
     }
     function getListBeitreten(id) {
         var strURL = "ressources/gameList.php";
         params = "beitreten=" + id;
         sendRequest(strURL, params, "POST");
-        window.setTimeout("getList()", 1500);
+        window.setTimeout("getList()", 500);
     }
     function getList(params) {
         var strURL = "ressources/gameList.php";
         sendRequest(strURL, params, "POST");
-        window.setTimeout("getList()", 1500);
+        window.setTimeout("getList()", 10000);
     }
 
 
-    -->
+
 </script>
 
 <div id="background">
@@ -97,6 +109,9 @@ require("ressources/header.inc.php");
                     if (isset($_REQUEST['neu'])) {
                         $neu = mysqli_real_escape_string($my_db, htmlentities($_REQUEST['neu']));
                         echo "<script>getListNeuesSpiel();</script>";
+                        if($_POST['farbe']=="lg" || $_POST['farbe']=="og"){
+                            mysqli_query($my_db, "INSERT INTO spiel (farbe) VALUES ('" . $_POST['farbe'] . "')");
+                        }
                     } elseif (isset($_REQUEST['beitreten'])) {
                         $beitreten = mysqli_real_escape_string($my_db, htmlentities($_REQUEST['beitreten']));
                         echo "<script>getListBeitreten(" . $beitreten . ");</script>";

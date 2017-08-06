@@ -37,14 +37,38 @@
     border-bottom: solid; border-width: 0.4vh; border-left: solid;
 }
 
-.sp1 {
+.rot {
     background-color: red;
     border-radius: 50%;
     display: inline-block;
     width: 9.6vh;
 }
-.sp2 {
+.gelb {
+    background-color: yellow;
+    border-radius: 50%;
+    display: inline-block;
+    width: 9.6vh;
+}
+.lila {
+    background-color: rebeccapurple;
+    border-radius: 50%;
+    display: inline-block;
+    width: 9.6vh;
+}
+.gruen {
     background-color: green;
+    border-radius: 50%;
+    display: inline-block;
+    width: 9.6vh;
+}
+.orange {
+    background-color: darkorange;
+    border-radius: 50%;
+    display: inline-block;
+    width: 9.6vh;
+}
+.grau {
+    background-color: darkslategrey;
     border-radius: 50%;
     display: inline-block;
     width: 9.6vh;

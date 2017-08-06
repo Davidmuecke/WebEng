@@ -1,5 +1,11 @@
 <?php
 session_start();
+if(isset($_SESSION['login'])) {
+    $login = $_SESSION['login'];
+}
+else {
+    header('Location: index.php');
+}
 /**
  * Created by PhpStorm.
  * User: kochdavi
@@ -8,16 +14,24 @@ session_start();
  */
 $spielstandNeu = "o,o,o,o,o,o;o,o,o,o,o,o;o,o,o,o,o,o;o,o,o,o,o,o;o,o,o,o,o,o;o,o,o,o,o,o;o,o,o,o,o,o";
 require("dba.php");
-
+$farbe= null;
 if(isset($_SESSION['login'])) {
     $user= $_SESSION['login'];
-
+    session_regenerate_id();
+    //standard farbe festlegen
+    $farbe="rg";
     if (isset($_REQUEST['neu'])) {
         //neues Spiel hinzufügen
+        if($_REQUEST['neu']=="lg"){
+            $farbe = "lg";
+        }
+        if($_REQUEST['neu']=="og"){
+            $farbe = "og";
+        }
         $res = mysqli_query($my_db, "SELECT * FROM spielneu WHERE spieler1 ='" . $user . "'") or die (mysqli_error($my_db));
         $game = mysqli_fetch_assoc($res);
         if (!isset($game['ID'])) {
-            $res = mysqli_query($my_db, "INSERT INTO spielneu (spieler1) VALUES ('" . $user . "')") or die (mysqli_error($my_db));
+            $res = mysqli_query($my_db, "INSERT INTO spielneu (spieler1, farbe) VALUES ('" . $user . "','" . $farbe . "')") or die (mysqli_error($my_db));
         }
     }
     if (isset($_REQUEST['beitreten'])) {
@@ -26,7 +40,7 @@ if(isset($_SESSION['login'])) {
         $res = mysqli_query($my_db, "SELECT * FROM spielneu WHERE ID ='" . $beitreten . "' AND spieler1 != '" . $user . "'") or die (mysqli_error($my_db));
         $game = mysqli_fetch_assoc($res);
         if (isset($game['ID'])) {
-            mysqli_query($my_db, "INSERT INTO spiel (spieler1, spieler2, time, spielstand, amzug) VALUES ('" . $game['spieler1'] . "','" . $_SESSION['userName'] . "','" . $game['time'] . "','" . $spielstandNeu . "','" . $game['spieler1'] . "')") or die (mysqli_error($my_db));
+            mysqli_query($my_db, "INSERT INTO spiel (spieler1, spieler2, time, spielstand, amzug, farbe) VALUES ('" . $game['spieler1'] . "','" . $user . "','" . $game['time'] . "','" . $spielstandNeu . "','" . $game['spieler1'] . "','" . $game['farbe'] . "')") or die (mysqli_error($my_db));
             mysqli_query($my_db, "DELETE FROM spielneu WHERE ID='" . $game['ID'] . "'");
         }
     }
@@ -43,7 +57,16 @@ if(isset($_SESSION['login'])) {
     if ($game['ID']) {
          echo"<p>Du hast schon ein neues Spiel erstellt (Spiel ".$game['ID']."). Du musst warten bis ein anderer Spieler deinem Spiel beitritt!</p>";
     } else {
-        echo "<a href='start.php?neu=game'><button class='btn login-success'>Neues Spiel erstellen</button></a>";
+        echo "<form action='start.php?' method='post'>
+                Wähle eine Farbkombination:
+                <select name='neu' class='btn login-success'>
+                    <option name='rg' value='rg' selected>Rot/Gelb</option>
+                    <option name='lg' value='lg'>Lila/Grün</option>
+                    <option name='og' value='og'>Orange/Grau</option>
+                </select><br>
+            <button type='submit' class='btn login-success'>Neues Spiel erstellen</button>
+	    </form>";
+
     }
     echo "</div>";
     echo "</div>";
@@ -84,3 +107,4 @@ if(isset($_SESSION['login'])) {
 } else {
     echo "<div class='error'>Du bist nicht angemeldet!</div>";
 }
+

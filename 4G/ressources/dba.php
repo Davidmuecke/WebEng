@@ -7,7 +7,6 @@
  */
 //Database access
 $sqlhost = "localhost";
-$sqlhost = "127.0.0.1";
 $sqluser = "david";
 $sqlpass = "david";
 $dbname  = "viergewinnt";
