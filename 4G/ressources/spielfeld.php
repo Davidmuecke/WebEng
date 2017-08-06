@@ -162,21 +162,35 @@ if (isset($_REQUEST['game'])) {
 
         //Spielfeld zeichnen
         if($farbe=="lg"){
-            echo "<h2>Spiel <strong>" . $game['ID'] . "</strong>: <strong class='lila'>" . $user . "</strong> gegen <strong class='gruen'>" . $gegner . "</strong></h2>";
+            if($myID==1){
+                echo "<h2>Spiel <strong>" . $game['ID'] . "</strong>: <strong class='lila'>" . $user . "</strong> gegen <strong class='gruen'>" . $gegner . "</strong></h2>";
+            } else{
+                echo "<h2>Spiel <strong>" . $game['ID'] . "</strong>: <strong class='gruen'>" . $user . "</strong> gegen <strong class='lila'>" . $gegner . "</strong></h2>";
+            }
+
         }
         elseif($farbe=="og"){
-            echo "<h2>Spiel <strong>" . $game['ID'] . "</strong>: <strong class='orange'>" . $user . "</strong> gegen <strong class='grau'>" . $gegner . "</strong></h2>";
+            if($myID==1){
+                echo "<h2>Spiel <strong>" . $game['ID'] . "</strong>: <strong class='orange'>" . $user . "</strong> gegen <strong class='grau'>" . $gegner . "</strong></h2>";
+            } else{
+                echo "<h2>Spiel <strong>" . $game['ID'] . "</strong>: <strong class='grau'>" . $user . "</strong> gegen <strong class='orange'>" . $gegner . "</strong></h2>";
+            }
         }
         else{
-            echo "<h2>Spiel <strong>" . $game['ID'] . "</strong>: <strong class='rot'>" . $user . "</strong> gegen <strong class='gelb'>" . $gegner . "</strong></h2>";
+            if($myID==1){
+                echo "<h2>Spiel <strong>" . $game['ID'] . "</strong>: <strong class='rot'>" . $user . "</strong> gegen <strong class='gelb'>" . $gegner . "</strong></h2>";
+            } else{
+                echo "<h2>Spiel <strong>" . $game['ID'] . "</strong>: <strong class='gelb'>" . $user . "</strong> gegen <strong class='rot'>" . $gegner . "</strong></h2>";
+            }
+
         }
 
         //Handlungsinfo
         if ($game['amzug'] == "ENDE") {
             if (gewonnen($spielstand) == $myID) {
-                echo "<div class='sieger alert alert-success'><strong>Info!</strong> Du hast gegen $gegner gewonnen!</div>";
+                echo "<div class='sieger alert alert-success'>Du hast gegen $gegner gewonnen!</div>";
             } else {
-                echo "<div class='verlierer alert alert-danger'><strong>Info!</strong> Du hast gegen $gegner verloren!</div>";
+                echo "<div class='verlierer alert alert-danger'>Du hast gegen $gegner verloren!</div>";
             }
 
         } else if ($game['amzug'] == $user) {
