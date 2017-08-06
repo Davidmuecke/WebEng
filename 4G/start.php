@@ -61,20 +61,32 @@ require("ressources/header.inc.php");
 
     function getListNeuesSpiel() {
         var strURL = "ressources/gameList.php";
-        params = "neu=farbe";
+        <?php
+        $farbe="rg";
+        if (isset($_REQUEST['neu'])) {
+            //neues Spiel hinzufügen
+            if($_REQUEST['neu']=="lg"){
+                $farbe = "lg";
+            }
+            if($_REQUEST['neu']=="og"){
+                $farbe = "og";
+            }
+           echo"params = \"neu=".$farbe."\";";
+        }
+        ?>
         sendRequest(strURL, params, "POST");
-        window.setTimeout("getList()", 1500);
+        window.setTimeout("getList()", 500);
     }
     function getListBeitreten(id) {
         var strURL = "ressources/gameList.php";
         params = "beitreten=" + id;
         sendRequest(strURL, params, "POST");
-        window.setTimeout("getList()", 1500);
+        window.setTimeout("getList()", 500);
     }
     function getList(params) {
         var strURL = "ressources/gameList.php";
         sendRequest(strURL, params, "POST");
-        window.setTimeout("getList()", 1500);
+        window.setTimeout("getList()", 10000);
     }
 
 
