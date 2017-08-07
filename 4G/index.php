@@ -16,7 +16,7 @@
     <?php
     if (isset($_REQUEST['error'])) {
         if ($_REQUEST['error'] == 'login') {
-            echo "<div class='error'>Du hast deinen Benutzername oder dein Passwort falsch eingegeben</div>";
+            echo "<div class='alert alert-danger'>Du hast deinen Benutzername oder dein Passwort falsch eingegeben!</div>";
         }
     }
     ?>
